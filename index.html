@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hijack-GAN: Unintended-Use of Pretrained, Black-Box GANs (CVPR 2021)</title>
+    <script type="text/javascript" src="hijackgan/latexit.js"></script>
+    <script type="text/javascript">
+    LatexIT.add('p',true);
+    </script>
+
+    <!-- CSS includes -->
+    <link href="hijackgan/bootstrap.css" rel="stylesheet">
+    <link href="hijackgan/css.css" rel="stylesheet" type="text/css">
+    <link href="hijackgan/mystyle.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <div id="header" class="container-fluid">
+      <div class="row">
+        <h1>Hijack-GAN: Unintended-Use of Pretrained, Black-Box GANs</h1>
+        <div class="authors">   
+          <a href="", target="_blank">Hui-Po Wang</a><sup>1</sup>, 
+          <a href="", target="_blank">Ning Yu</a><sup>2,3</sup>, 
+          <a href="", target="_blank">Mario Fritz</a><sup>1</sup>
+        </div>
+      </div>
+    
+      <p style="text-align:center;">
+        <sup>1</sup>CISPA Helmholtz Center for Information Security
+         
+        <sup>2</sup>Max Planck Institute for Informatics </br>
+
+        <sup>3</sup>University of Maryland, College Park 
+      </p>
+    </div>
+    <div class="container" id="abstractdiv">
+      <h2>Abstract</h2>
+      While Generative Adversarial Networks (GANs) show increasing performance and the level of realism is becoming indistinguishable from natural images, this also comes with high demands on data and computation. We show that state-of-the-art GAN models -- such as they are being publicly released by researchers and industry -- can be used for a range of applications beyond unconditional image generation. We achieve this by an iterative scheme that also allows gaining control over the image generation process despite the highly non-linear latent spaces of the latest GAN models. We demonstrate that this opens up the possibility to re-use state-of-the-art, difficult to train, pre-trained GANs with a high level of control even if only black-box access is granted. Our work also raises concerns and awareness that the use cases of a published GAN model may well reach beyond the creators' intention, which needs to be taken into account before a full public release.</div>
+
+    <!--
+    <div class="container" id="intro_video">
+    <h2>Introduction Video</h2>
+    <p style="text-align:center;">
+      <iframe width="966" height="543" src="https://www.youtube.com/embed/YnD_zQNbfK4" frameborder="0" allowfullscreen></iframe>
+    </p>
+    </div>
+    -->
+
+    <div class="container" id="paperdiv">
+      <h2>CVPR 2021 Paper</h2>
+      <a href="https://arxiv.org/abs/2011.14107" target="_blank">
+        <div class="thumbs">
+          <img src="hijackgan/thumbnails/page1.jpg" width="13%">
+          <img src="hijackgan/thumbnails/page2.jpg" width="13%">
+          <img src="hijackgan/thumbnails/page3.jpg" width="13%">
+          <img src="hijackgan/thumbnails/page4.jpg" width="13%">
+          <img src="hijackgan/thumbnails/page5.jpg" width="13%">
+          <img src="hijackgan/thumbnails/page6.jpg" width="13%">
+          <img src="hijackgan/thumbnails/page7.jpg" width="13%">
+          <img src="hijackgan/thumbnails/page8.jpg" width="13%">
+          <img src="hijackgan/thumbnails/page9.jpg" width="13%">
+          <img src="hijackgan/thumbnails/page10.jpg" width="13%">
+        </div>
+      </a>
+    <div class="row">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-3">
+        <a href="https://github.com/a514514772/hijackgan" target="_blank"><p style="text-align: center;">
+        <img src="hijackgan/icon/github_icon.png">
+        <br/>
+        Code (Github)
+      </p></a></div>
+      <div class="col-sm-3">
+        <a href="https://arxiv.org/abs/2011.14107" target="_blank"><p style="text-align: center;">
+        <img src="hijackgan/icon/pdf_icon.png" height="120">
+        <br/>
+        Paper (arXiv)
+      </p></a></div>
+      <div class="col-sm-3">
+      </div>
+    </div></div>
+
+    <div class="container" id="method">
+      <h2>Method</h2>
+      <p style="text-align:center;">
+        <img src="hijackgan/model.png" width="80%">
+      </p>
+      <br>
+      <p>
+        An overview of the proposed framework. The framework takes two steps to reuse GANs: (a) train a proxy model to distill information from pre-trained models, circumventing accessing the gradients of pre-trained models; (b) identify and iteratively traverse a non-linear trajectory under the guidance of gradients.
+      </p>
+    </div>
+
+    <div class="container" id="citation">
+      <h2>Citation</h2>
+      <div>
+        <pre class="citation">
+@inproceedings{wang2021hijack,
+  title={Hijack-GAN: Unintended-Use of Pretrained, Black-Box GANs},
+  author={Wang, Hui-Po and Yu, Ning and Fritz, Mario},
+  booktitle={IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year={2021}
+}</pre>
+      </div>
+    </div>
+
+    <div id=footer><br></div>
+    <!-- Javascript includes -->
+    <script src="hijackgan/jquery-1.js"></script>
+    <script src="hijackgan/bootstrap.js"></script>
+  
+
+</body></html>
