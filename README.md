@@ -109,5 +109,12 @@ CUDA_VISIBLE_DEVICES=0 python edit.py \
 ### Generate Balanced Data
 ## Evaluations
 
+## TO-DO
+- [x] Basic usage
+- [ ] Prerequisites
+- [ ] How to generate data
+- [ ] How to evaluate
+- [ ] How to incorporate more GANs and tasks
+
 ## Acknowledgment
 This code is built upon [InterfaceGAN](https://github.com/genforce/interfacegan)
