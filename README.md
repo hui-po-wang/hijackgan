@@ -2,6 +2,9 @@
 In this work, we propose a framework HijackGAN, which enables non-linear latent space traversal and gain high-level controls, e.g., attributes, head poses, and landmarks, over unconditional image generation GANs in a fully black-box setting. It opens up the possibility of reusing GANs while raising concerns about unintended usage.
 
 [[Paper (CVPR 2021)]](https://arxiv.org/abs/2011.14107)[[Project Page]](https://a514514772.github.io/hijackgan/)
+## Prerequisites
+### Install required packages
+### Download pretrained GANs
 ## Quick Start
 Specify number of images to edit, a model to generate images, some parameters for editting.
 ```
@@ -16,10 +19,6 @@ python edit.py \
     --attr_index 0\
     --task attribute
 ```
-## Prerequisites
-### Install required packages
-### Download pretrained GANs
-
 ## Usage
 **Important:** For different given images (initial points), different step size and steps may be considered. In the following examples, we provide the parameters used in our paper. One could adjust them for better performance.
 
