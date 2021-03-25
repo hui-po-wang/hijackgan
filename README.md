@@ -1,5 +1,5 @@
 # Hijack-GAN: Unintended-Use of Pretrained, Black-Box GANs (Still under Construction ...)
-In this work, we propose a framework HijackGAN, which enables non-linear latent space traversal and gain high-level controls, e.g., attributes, head poses, and landmarks, over unconditional image generation GANs in a fully black-box setting.
+In this work, we propose a framework HijackGAN, which enables non-linear latent space traversal and gain high-level controls, e.g., attributes, head poses, and landmarks, over unconditional image generation GANs in a fully black-box setting. It opens up the possibility of reusing GANs while raising concerns about unintended usage.
 
 [[Paper (CVPR 2021)]](https://arxiv.org/abs/2011.14107)[[Project Page]](https://a514514772.github.io/hijackgan/)
 ## Quick Start
