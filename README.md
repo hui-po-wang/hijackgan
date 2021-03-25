@@ -16,8 +16,9 @@ python edit.py \
     -o results/stylegan_celebahq_smile_editing \
     --step_size 0.2 \
     --steps 40 \
-    --attr_index 0\
-    --task attribute
+    --attr_index 0 \
+    --task attribute \
+    --method ours
 ```
 ## Usage
 **Important:** For different given images (initial points), different step size and steps may be considered. In the following examples, we provide the parameters used in our paper. One could adjust them for better performance.
