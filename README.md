@@ -6,6 +6,16 @@ In this work, we propose a framework HijackGAN, which enables non-linear latent 
 ### Install required packages
 ### Download pretrained GANs
 Download the CelebAHQ pretrained weights of ProgressiveGAN [[paper]](https://arxiv.org/pdf/1710.10196.pdf)[[code]](https://github.com/tkarras/progressive_growing_of_gans) and StyleGAN [[paper]](https://arxiv.org/pdf/1812.04948.pdf)[[code]](https://github.com/NVlabs/stylegan), and then put those weights in `./models/pretrain`.
+```
+pretrain/
+├── Pretrained_Models_Should_Be_Placed_Here
+├── karras2018iclr-celebahq-1024x1024.pkl
+├── karras2019stylegan-celebahq-1024x1024.pkl
+├── pggan_celebahq_z.pt
+├── stylegan_celebahq_z.pt
+├── stylegan_headpose_z_dp.pt
+└── stylegan_landmark_z.pt
+```
 ## Quick Start
 Specify number of images to edit, a model to generate images, some parameters for editting.
 ```
