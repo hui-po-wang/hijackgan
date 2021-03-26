@@ -5,8 +5,7 @@ In this work, we propose a framework HijackGAN, which enables non-linear latent 
 ## Prerequisites
 ### Install required packages
 - cvxpy
-- facenet-pytorch
-- tensorflow
+- tensorflow==1.14 (used for converting pre-trained weights)
 ### Download pretrained GANs
 Download the CelebAHQ pretrained weights of ProgressiveGAN [[paper]](https://arxiv.org/pdf/1710.10196.pdf)[[code]](https://github.com/tkarras/progressive_growing_of_gans) and StyleGAN [[paper]](https://arxiv.org/pdf/1812.04948.pdf)[[code]](https://github.com/NVlabs/stylegan), and then put those weights in `./models/pretrain`. For example,
 ```
@@ -27,7 +26,7 @@ python edit.py \
     -m pggan_celebahq \
     -b boundaries/ \
     -n "$LATENT_CODE_NUM" \
-    -o results/stylegan_celebahq_smile_editing \
+    -o results/stylegan_celebahq_eyeglasses \
     --step_size 0.2 \
     --steps 40 \
     --attr_index 0 \

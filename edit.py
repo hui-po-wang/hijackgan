@@ -150,6 +150,7 @@ def parse_args():
   parser.add_argument('--method', type=str, required=True,
                                             choices=['interfacegan', 'linear', 'ours'])
   parser.add_argument('--condition', action='store_true')
+  parser.add_argument('--demo', action='store_true')
   parser.add_argument('--direction', type=float, default=None, choices=[-1, 1],
                       help='Control if attribute of interest increases or decreases.'
                            'It only works for headpose and landmark.'
