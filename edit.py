@@ -23,41 +23,42 @@ from models.pggan_generator import PGGANGenerator
 from models.stylegan_generator import StyleGANGenerator
 from utils.logger import setup_logger
 from utils.manipulator import linear_interpolate
-from my_interpolation import my_linear_interpolate
+from hijackgan_interpolation import interpolate
 from collections import defaultdict
-#from search_interpolation import my_linear_interpolate
 
-def process_bound_path(boundary_path, attr_index, gan_type, condition):
-    bound_choices = {}
-    if gan_type == 'pggan' and not condition:
-        bound_choices[0] = 'pggan_celebahq_eyeglasses_boundary.npy'
-        bound_choices[1] = 'pggan_celebahq_gender_boundary.npy'
-        bound_choices[2] = 'pggan_celebahq_smile_boundary.npy'
-        bound_choices[3] = 'pggan_celebahq_age_boundary.npy'
-        bound_choices[5] = 'pggan_celebahq_bald.npy'
-        bound_choices[7] = 'pggan_celebahq_narrow_eyes.npy'
-        bound_choices[10] = 'pggan_celebahq_blonde_hair.npy'
-        bound_choices[13] = 'pggan_celebahq_pale_skin.npy'
-    elif gan_type == 'stylegan' and not condition:
-        bound_choices[0] = 'stylegan_celebahq_eyeglasses_boundary.npy'
-        bound_choices[1] = 'stylegan_celebahq_gender_boundary.npy'
-        bound_choices[2] = 'stylegan_celebahq_smile_boundary.npy'
-        bound_choices[3] = 'stylegan_celebahq_age_boundary.npy'
-        bound_choices[5] = 'stylegan_celebahq_bald.npy'
-        bound_choices[7] = 'stylegan_celebahq_narrow_eyes.npy'
-        bound_choices[10] = 'stylegan_celebahq_blonde_hair.npy'
-        bound_choices[13] = 'stylegan_celebahq_pale_skin.npy'
-    elif gan_type == 'pggan' and condition:
-        bound_choices = ['pggan_celebahq_eyeglasses_c_all_boundary.npy', 'pggan_celebahq_gender_c_all_boundary.npy',
-            'pggan_celebahq_smile_c_all_boundary.npy', 'pggan_celebahq_age_c_all_boundary.npy']
-    elif gan_type == 'stylegan' and condition:
-        bound_choices = ['stylegan_celebahq_eyeglasses_c_all_boundary.npy', 'stylegan_celebahq_gender_c_all_boundary.npy',
-            'stylegan_celebahq_smile_c_all_boundary.npy', 'stylegan_celebahq_age_c_all_boundary.npy']
-    else:
-        raise ValueError('process_bound_path: unknown gan type.')
+def process_bound_path(gan_type, args):
+        bound_choices = {}
+        if gan_type == 'pggan' and not args.condition:
+                bound_choices[0] = 'pggan_celebahq_eyeglasses_boundary.npy'
+                bound_choices[1] = 'pggan_celebahq_gender_boundary.npy'
+                bound_choices[2] = 'pggan_celebahq_smile_boundary.npy'
+                bound_choices[3] = 'pggan_celebahq_age_boundary.npy'
+                bound_choices[5] = 'pggan_celebahq_bald.npy'
+                bound_choices[7] = 'pggan_celebahq_narrow_eyes.npy'
+                bound_choices[10] = 'pggan_celebahq_blonde_hair.npy'
+                bound_choices[13] = 'pggan_celebahq_pale_skin.npy'
+        elif gan_type == 'stylegan' and not args.condition:
+                bound_choices[0] = 'stylegan_celebahq_eyeglasses_boundary.npy'
+                bound_choices[1] = 'stylegan_celebahq_gender_boundary.npy'
+                bound_choices[2] = 'stylegan_celebahq_smile_boundary.npy'
+                bound_choices[3] = 'stylegan_celebahq_age_boundary.npy'
+                bound_choices[5] = 'stylegan_celebahq_bald.npy'
+                bound_choices[7] = 'stylegan_celebahq_narrow_eyes.npy'
+                bound_choices[10] = 'stylegan_celebahq_blonde_hair.npy'
+                bound_choices[13] = 'stylegan_celebahq_pale_skin.npy'
+        elif gan_type == 'pggan' and args.condition:
+                bound_choices = ['pggan_celebahq_eyeglasses_c_all_boundary.npy', 'pggan_celebahq_gender_c_all_boundary.npy',
+                        'pggan_celebahq_smile_c_all_boundary.npy', 'pggan_celebahq_age_c_all_boundary.npy']
+        elif gan_type == 'stylegan' and args.condition:
+                bound_choices = ['stylegan_celebahq_eyeglasses_c_all_boundary.npy', 'stylegan_celebahq_gender_c_all_boundary.npy',
+                        'stylegan_celebahq_smile_c_all_boundary.npy', 'stylegan_celebahq_age_c_all_boundary.npy']
+        else:
+                raise ValueError('process_bound_path: unknown gan type.')
 
-    print(boundary_path, bound_choices[attr_index], attr_index)
-    return os.path.join(boundary_path, bound_choices[attr_index])
+        if args.task == 'attribute':
+            return os.path.join(args.boundary_path, bound_choices[args.attr_index])
+        else:
+            return os.path.join(args.boundary_path, bound_choices[0])
 
 def demo_code(gan_type, args):
     out_path = ""
@@ -211,7 +212,7 @@ def main():
         if args.task == 'attribute':
             if args.method == 'interfacegan':
                 # baseline modification from initial point
-                interpolations = my_linear_interpolate(latent_codes[sample_id:sample_id + 1],
+                interpolations = interpolate(latent_codes[sample_id:sample_id + 1],
                                                     attr_index,
                                                     boundary,
                                                     'linear',
@@ -233,7 +234,7 @@ def main():
             elif args.method == 'linear':
                 # linear baseline attribute modification
                 starting_latent_code = latent_codes[sample_id:sample_id + 1].reshape(1, -1)
-                interpolations = my_linear_interpolate(starting_latent_code,
+                interpolations = interpolate(starting_latent_code,
                                                     attr_index,
                                                     boundary,
                                                     'static_linear',
@@ -256,7 +257,7 @@ def main():
             elif args.method == 'ours':
                 # attribute modification
                 starting_latent_code = latent_codes[sample_id:sample_id + 1].reshape(1, -1)
-                interpolations = my_linear_interpolate(starting_latent_code,
+                interpolations = interpolate(starting_latent_code,
                                                         attr_index,
                                                         boundary,
                                                         'piecewise_linear',
@@ -279,7 +280,7 @@ def main():
         elif args.task == 'head_pose':
             # pose modification
             starting_latent_code = latent_codes[sample_id:sample_id + 1].reshape(1, -1)
-            interpolations = my_linear_interpolate(starting_latent_code,
+            interpolations = interpolate(starting_latent_code,
                                                     attr_index,
                                                     boundary,
                                                     'pose_edit',
@@ -303,7 +304,7 @@ def main():
         elif args.task == 'landmark':
             # landmark modification
             starting_latent_code = latent_codes[sample_id:sample_id + 1].reshape(1, -1)
-            interpolations = my_linear_interpolate(starting_latent_code,
+            interpolations = interpolate(starting_latent_code,
                                                     attr_index,
                                                     boundary,
                                                     'piecewise_linear',

@@ -4,6 +4,9 @@ In this work, we propose a framework HijackGAN, which enables non-linear latent 
 [[Paper (CVPR 2021)]](https://arxiv.org/abs/2011.14107)[[Project Page]](https://a514514772.github.io/hijackgan/)
 ## Prerequisites
 ### Install required packages
+- cvxpy
+- facenet-pytorch
+- tensorflow
 ### Download pretrained GANs
 Download the CelebAHQ pretrained weights of ProgressiveGAN [[paper]](https://arxiv.org/pdf/1710.10196.pdf)[[code]](https://github.com/tkarras/progressive_growing_of_gans) and StyleGAN [[paper]](https://arxiv.org/pdf/1812.04948.pdf)[[code]](https://github.com/NVlabs/stylegan), and then put those weights in `./models/pretrain`. For example,
 ```

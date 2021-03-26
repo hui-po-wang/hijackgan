@@ -9,7 +9,6 @@ import torch.optim as optim
 import torch.nn.functional as F
 from tqdm import tqdm
 
-from facenet_pytorch import MTCNN, InceptionResnetV1
 from PIL import Image
 
 
@@ -428,7 +427,7 @@ def static_linear_interpolate(latent_code,
 
 
 
-def linear_interpolate(latent_code,
+def interpolate(latent_code,
                          attr_index,
                          boundary,
                          mode,
