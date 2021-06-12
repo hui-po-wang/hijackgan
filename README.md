@@ -6,9 +6,9 @@ In this work, we propose a framework HijackGAN, which enables non-linear latent 
 [[Paper (CVPR 2021)]](https://arxiv.org/abs/2011.14107)[[Project Page]](https://a514514772.github.io/hijackgan/)
 ## Prerequisites
 ### Install required packages
-- Pytorch==1.7.0
-- cvxpy==1.1.11
-- tensorflow==1.14 (used for converting pre-trained weights)
+```
+pip install -r requirements.txt
+```
 ### Download pretrained GANs
 Download the CelebAHQ pretrained weights of ProgressiveGAN [[paper]](https://arxiv.org/pdf/1710.10196.pdf)[[code]](https://github.com/tkarras/progressive_growing_of_gans) and StyleGAN [[paper]](https://arxiv.org/pdf/1812.04948.pdf)[[code]](https://github.com/NVlabs/stylegan), and then put those weights in `./models/pretrain`. For example,
 ```
@@ -126,7 +126,7 @@ CUDA_VISIBLE_DEVICES=0 python edit.py \
 
 ## TO-DO
 - [x] Basic usage
-- [ ] Prerequisites
+- [x] Prerequisites
 - [ ] How to generate data
 - [ ] How to evaluate
 - [ ] How to incorporate more GANs and tasks
