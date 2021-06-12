@@ -55,10 +55,12 @@ def parse_args():
   parser.add_argument('-SI', '--start_index', type=int, required=True,
                       help='The first index that is used to name the save image.')
   parser.add_argument('--pretrained_clf_path', type=str, 
-                      default='/home/u5397696/interpolation/celebA-hq-classifier')
+                      default='./celebA-hq-classifier')
   parser.add_argument('--sample_per_category', type=int, default=50000)
-  parser.add_argument('--threshold', type=float, default=0.9)
-  parser.add_argument('--no_generated_imgs', action='store_true')
+  parser.add_argument('--threshold', type=float, default=0.9,
+                     help='Confidence for samples to be accepted.')
+  parser.add_argument('--no_generated_imgs', action='store_true',
+                     help='If specified, the program will only keep the noise-task_output pairs; thus save the disk space.')
 
   return parser.parse_args()
 
@@ -95,20 +97,21 @@ def main():
   results = defaultdict(list)
   pbar = tqdm(total=total_num, leave=False)
     
-  '''Pretrained compound attribute classifier
-  '''
+  """Pretrained attribute classifier
+  
+  Replace the classifier 'attr_clf' with your own task models.
+  """
   attr_num = 16
   attr_clf = EvalCompoundResNet(args.pretrained_clf_path)
-  #attr_clf.load_state_dict(torch.load(args.pretrained_clf_path))
   logger.info(f'Classifier loaded.')
+  
   attr_clf.cuda()
   attr_clf.eval()
   attr_clf.requires_grad = False
+  
   downscale = nn.Upsample(size=224, mode='bilinear')
   if os.path.exists(args.key_file_path):
     raise ValueError(f'{args.key_file_path} has existed.')
-    #with open(args.key_file_path, 'rb') as f:
-    #  data_index = pickle.load(f)
   else:
     data_index = [[[],[]] for _ in range(int(attr_num))]
   image_cnt = args.start_index
