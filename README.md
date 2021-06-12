@@ -1,4 +1,4 @@
-# Hijack-GAN: Unintended-Use of Pretrained, Black-Box GANs (Still under Construction ...)
+# Hijack-GAN: Unintended-Use of Pretrained, Black-Box GANs 
 ![Pytorch 1.7.0](https://img.shields.io/badge/Pytorch-1.7.0-brightgreen) ![cvxpy 1.1.11](https://img.shields.io/badge/cvxpy-1.1.11-brightgreen) ![tensorflow 1.14](https://img.shields.io/badge/tensorflow-1.14-brightgreen)
 
 In this work, we propose a framework HijackGAN, which enables non-linear latent space traversal and gain high-level controls, e.g., attributes, head poses, and landmarks, over unconditional image generation GANs in a fully black-box setting. It opens up the possibility of reusing GANs while raising concerns about unintended usage.
