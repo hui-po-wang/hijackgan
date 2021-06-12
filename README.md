@@ -136,7 +136,6 @@ CUDA_VISIBLE_DEVICES=0 python generate_balanced_data.py -m stylegan_celebahq \
 - [x] Prerequisites
 - [x] How to generate data
 - [ ] How to evaluate
-- [ ] How to incorporate more GANs and tasks
 
 ## Acknowledgment
 This code is built upon [InterfaceGAN](https://github.com/genforce/interfacegan)
