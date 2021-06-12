@@ -126,7 +126,8 @@ This a **templeate** showing how we generated balanced data for attribute manipu
 Please first refer to [here](https://github.com/a514514772/hijackgan/blob/main/generate_balanced_data.py#L99) and replace ```YOUR_TASK_MODEL``` with your own classification model, and then run:
 ```
 NUM=500000
-CUDA_VISIBLE_DEVICES=0 python generate_balanced_data.py -m stylegan_celebahq -o ./generated_data -K ./generated_data/indices.pkl -n "$NUM" -SI 0 --no_generated_imgs
+CUDA_VISIBLE_DEVICES=0 python generate_balanced_data.py -m stylegan_celebahq \
+    -o ./generated_data -K ./generated_data/indices.pkl -n "$NUM" -SI 0 --no_generated_imgs
 ```
 ## Evaluations
 
