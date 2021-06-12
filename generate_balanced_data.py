@@ -19,7 +19,6 @@ import cv2
 import numpy as np
 from tqdm import tqdm
 
-from models.classifiers import EvalCompoundResNet
 from models.model_settings import MODEL_POOL
 from models.pggan_generator import PGGANGenerator
 from models.stylegan_generator import StyleGANGenerator
@@ -102,7 +101,7 @@ def main():
   Replace the classifier 'attr_clf' with your own task models.
   """
   attr_num = 16
-  attr_clf = EvalCompoundResNet(args.pretrained_clf_path)
+  attr_clf = YOUR_TASK_MODEL()
   logger.info(f'Classifier loaded.')
   
   attr_clf.cuda()
