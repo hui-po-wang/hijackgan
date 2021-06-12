@@ -122,12 +122,18 @@ CUDA_VISIBLE_DEVICES=0 python edit.py \
     --demo
 ```
 ### Generate Balanced Data
+This a **templeate** showing how we generated balanced data for attribute manipulation (16 attributes in our internal experiments). You can modify it to fit your task better.
+Please first refer to [here](https://github.com/a514514772/hijackgan/blob/main/generate_balanced_data.py#L99) and replace ```YOUR_TASK_MODEL``` with your own classification model, and then run:
+```
+NUM=500000
+CUDA_VISIBLE_DEVICES=0 python generate_balanced_data.py -m stylegan_celebahq -o ./generated_data -K ./generated_data/indices.pkl -n "$NUM" -SI 0 --no_generated_imgs
+```
 ## Evaluations
 
 ## TO-DO
 - [x] Basic usage
 - [x] Prerequisites
-- [ ] How to generate data
+- [x] How to generate data
 - [ ] How to evaluate
 - [ ] How to incorporate more GANs and tasks
 
