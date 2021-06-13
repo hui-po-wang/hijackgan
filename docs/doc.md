@@ -11,6 +11,16 @@ Our framework supports three kinds of tasks, which can be specified by `--task o
 | landmark  | Landmark modification  |
 ## Attribute Indices
 We describe the mapping table of input parameters `--attr_index` for different `--task` here.
-### Attributes
-### Head Poses
-### Landmarks
+### Attribute Manipulation
+| Attribute   | Index |
+|-------------|-------|
+| Eyeglasses  | 0     |
+| Gender      | 1     |
+| Smile       | 2     |
+| Age         | 3     |
+| Bald        | 5     |
+| Narrow_eyes | 7     |
+| Blonde_hair | 10    |
+| pale_skin   | 13    |
+### Head Pose Manipulation
+### Landmark Manipulation
